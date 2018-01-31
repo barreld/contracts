@@ -1,0 +1,111 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: 'Car service'
+  description: 'Storing and getting cars'
+
+schemes:
+- "https"
+
+paths:
+  /cars:
+    post:
+      tags:
+      - car
+      summary: "Create car entity"
+      description: Creates a new car entity
+      operationId: createCar
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - in: "header"
+        name: "Authorization"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "carEntity"
+        required: false
+        schema:
+          $ref: '#/definitions/CarEntity'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/CarResponse'
+
+  /cars/{car-id}:
+    get:
+      tags:
+        - car
+      summary: "Get car"
+      description: Retrieves existing car entity
+      operationId: getCar
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "car-id"
+        required: true
+        type: "string"
+      - in: "header"
+        name: "Authorization"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/CarResponse'
+    put:
+      tags:
+        - car
+      summary: "Update car"
+      description: Updates existing car entity
+      operationId: updateCar
+      produces:
+      - "application/json"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "car-id"
+        required: true
+        type: "string"
+      - in: "header"
+        name: "Authorization"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "carEntity"
+        required: true
+        schema:
+          $ref: '#/definitions/CarEntity'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/CarResponse'
+
+definitions:
+  CarResponse:
+    type: object
+    properties:
+      carId:
+        type: string
+        example: "wROZDOPqcm8pqYLs"
+        description: "16 digit alphanumeric upper/lowercase unique identifier for the car entity"
+      payload:
+        $ref: '#/definitions/CarEntity'
+  CarEntity:
+    type: object
+    properties:
+      name:
+        type: string
+        example: honda
+        description: "Car name"
+
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /whitbread/Basket-API/1.0

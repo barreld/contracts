@@ -16,7 +16,7 @@ paths:
       description: Creates a new breakfast entity
       operationId: createBreakfast
       produces:
-      - application/json
+      - application/xml
       consumes:
       - application/json
       parameters:

@@ -9,7 +9,7 @@ schemes:
 
 paths:
   /cars:
-    post:
+    put:
       tags:
       - car
       summary: "Create car entity"

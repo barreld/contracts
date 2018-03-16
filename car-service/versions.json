@@ -1,0 +1,8 @@
+{
+"name" : "Car Service",
+"repository" : "www.github.com/car-service",
+"versions" : {
+  "uat" : "1.1.0",
+  "prod" : "1.1.0"
+}
+}

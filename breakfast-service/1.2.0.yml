@@ -1,20 +1,20 @@
 swagger: '2.0'
 info:
-  version: '1.0'
-  title: 'Car service'
-  description: 'Storing and getting cars'
+  version: '1.2.0'
+  title: 'Breakfast service'
+  description: 'Storing and getting breakfasts'
 
 schemes:
 - "https"
 
 paths:
-  /cars:
+  /breakfasts:
     post:
       tags:
-      - car
-      summary: "Create car entity"
-      description: Creates a new car entity
-      operationId: createCar
+      - breakfast
+      summary: "Create breakfast entity"
+      description: Creates a new breakfast entity
+      operationId: createBreakfast
       produces:
       - application/json
       consumes:
@@ -25,28 +25,28 @@ paths:
         required: false
         type: "string"
       - in: "body"
-        name: "carEntity"
+        name: "breakfastEntity"
         required: false
         schema:
-          $ref: '#/definitions/CarEntity'
+          $ref: '#/definitions/BreakfastEntity'
       responses:
         200:
           description: Success
           schema:
-            $ref: '#/definitions/CarResponse'
+            $ref: '#/definitions/BreakfastResponse'
 
-  /cars/{car-id}:
+  /breakfasts/{breakfast-id}:
     get:
       tags:
-        - car
-      summary: "Get car"
-      description: Retrieves existing car entity
-      operationId: getCar
+        - breakfast
+      summary: "Get breakfast"
+      description: Retrieves existing breakfast entity
+      operationId: getBreakfast
       produces:
       - "application/json"
       parameters:
       - in: "path"
-        name: "car-id"
+        name: "breakfast-id"
         required: true
         type: "string"
       - in: "header"
@@ -57,20 +57,20 @@ paths:
         200:
           description: Success
           schema:
-            $ref: '#/definitions/CarResponse'
+            $ref: '#/definitions/BreakfastResponse'
     put:
       tags:
-        - car
-      summary: "Update car"
-      description: Updates existing car entity
-      operationId: updateCar
+        - breakfast
+      summary: "Update breakfast"
+      description: Updates existing breakfast entity
+      operationId: updateBreakfast
       produces:
       - "application/json"
       consumes:
       - "application/json"
       parameters:
       - in: "path"
-        name: "car-id"
+        name: "breakfast-id"
         required: true
         type: "string"
       - in: "header"
@@ -78,33 +78,33 @@ paths:
         required: true
         type: "string"
       - in: "body"
-        name: "carEntity"
+        name: "breakfastEntity"
         required: true
         schema:
-          $ref: '#/definitions/CarEntity'
+          $ref: '#/definitions/BreakfastEntity'
       responses:
         200:
           description: Success
           schema:
-            $ref: '#/definitions/CarResponse'
+            $ref: '#/definitions/BreakfastResponse'
 
 definitions:
-  CarResponse:
+  BreakfastResponse:
     type: object
     properties:
-      carId:
+      breakfastId:
         type: string
         example: "wROZDOPqcm8pqYLs"
-        description: "16 digit alphanumeric upper/lowercase unique identifier for the car entity"
+        description: "16 digit alphanumeric upper/lowercase unique identifier for the breakfast entity"
       payload:
-        $ref: '#/definitions/CarEntity'
-  CarEntity:
+        $ref: '#/definitions/BreakfastEntity'
+  BreakfastEntity:
     type: object
     properties:
       name:
         type: string
-        example: honda
-        description: "Car name"
+        example: eggs
+        description: "Breakfast name"
 
 # Added by API Auto Mocking Plugin
 host: virtserver.swaggerhub.com

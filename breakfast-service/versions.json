@@ -1,0 +1,9 @@
+{
+"name" : "breakfast-service",
+"repository" : "www.github.com/breakfast-service",
+"versions" : {
+  "uat" : "1.1.0",
+  "prod" : "1.0.0",
+  "27-05-18" : "1.2.0"
+}
+}

@@ -1,0 +1,111 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: 'Breakfast service'
+  description: 'Storing and getting breakfasts'
+
+schemes:
+- "https"
+
+paths:
+  /breakfasts:
+    post:
+      tags:
+      - breakfast
+      summary: "Create breakfast entity"
+      description: Creates a new breakfast entity
+      operationId: createBreakfast
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - in: "header"
+        name: "Authorization"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "breakfastEntity"
+        required: false
+        schema:
+          $ref: '#/definitions/BreakfastEntity'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/BreakfastResponse'
+
+  /breakfasts/{breakfast-id}:
+    get:
+      tags:
+        - breakfast
+      summary: "Get breakfast"
+      description: Retrieves existing breakfast entity
+      operationId: getBreakfast
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "breakfast-id"
+        required: true
+        type: "string"
+      - in: "header"
+        name: "Authorization"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/BreakfastResponse'
+    put:
+      tags:
+        - breakfast
+      summary: "Update breakfast"
+      description: Updates existing breakfast entity
+      operationId: updateBreakfast
+      produces:
+      - "application/json"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "breakfast-id"
+        required: true
+        type: "string"
+      - in: "header"
+        name: "Authorization"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "breakfastEntity"
+        required: true
+        schema:
+          $ref: '#/definitions/BreakfastEntity'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/BreakfastResponse'
+
+definitions:
+  BreakfastResponse:
+    type: object
+    properties:
+      breakfastId:
+        type: string
+        example: "wROZDOPqcm8pqYLs"
+        description: "16 digit alphanumeric upper/lowercase unique identifier for the breakfast entity"
+      payload:
+        $ref: '#/definitions/BreakfastEntity'
+  BreakfastEntity:
+    type: object
+    properties:
+      name:
+        type: string
+        example: eggs
+        description: "Breakfast name"
+
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /whitbread/Basket-API/1.0
